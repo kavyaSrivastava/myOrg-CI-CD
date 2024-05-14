@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Search Account Wired Function" iconname="custom custom:custom57">
+        <div class="slds-m-around_medium">
+            <lightning-input type="text" onchange={handleKeyChange} label="Search"> </lightning-input>
+<template if:true= {account}>
+<template for:each={account.data} for:item="acc">
+    <lightning-layout key={acc.id}>
+    <li> 
+        {acc.Name}
+       </li>
+</lightning-layout></template>
+</template>
+       </div>
+    </lightning-card>
+    
+</template>

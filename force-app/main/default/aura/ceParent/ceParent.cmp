@@ -1,0 +1,9 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:registerEvent name="parent" type="c:ceEvent" ></aura:registerEvent>
+    <!--     <aura:registerEvent name="sampleCmpEvent" type="c:SampleComponentEvent" />
+ -->
+
+ <lightning:button label="Click to fire the event" variant="brand" onclick="{!c.parentComponentEvent}"/>
+ <c:ceCHild></c:ceCHild>
+
+</aura:component>

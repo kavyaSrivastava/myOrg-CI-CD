@@ -1,0 +1,15 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name = "setdemo" type = "Set" default="['Name','TestAcc1','NumberofEmployees']"/>
+     <aura:attribute name = "jsobject" type = "Object" />
+    <aura:handler name = "init" value="{!this}" action="{!c.doinit2}"/>
+    
+    
+    <h1> component Attribute's Value:{!v.setdemo[0]}</h1> 
+    <h1> component Attribute's Value:{!v.setdemo[1]}</h1>
+    <h1> component Attribute's Value:{!v.setdemo[2]}
+        Name:{!v.jsobject.Name}<br/>
+        Age:{!v.jsObject.Age}
+    </h1> 
+    
+</aura:component>

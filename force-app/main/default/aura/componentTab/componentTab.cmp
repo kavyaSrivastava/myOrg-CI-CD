@@ -1,0 +1,13 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableforAllPageTypes" access="global">
+    <!-- ,  -->
+    <div class="slds-tabs--default">
+        <ul class="slds-tabs--default__nav" role="tablist">
+            <li aura:id="tabpage" class="slds-tabs--default__item slds-text-heading--label slds-active" title="Active" onclick="{!c.changeTab}"
+                role="presentation"><a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Active</a></li>
+            <li aura:id="tabpage" class="slds-tabs--default__item slds-text-heading--label" title="Previous" onclick="{!c.changeTab}"
+                role="presentation"><a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Previous</a></li>
+        </ul>
+        <div aura:id="tab-default-1" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">Item One Content</div>
+        <div aura:id="tab-default-2" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">Item Two Content</div>
+    </div>
+</aura:component>

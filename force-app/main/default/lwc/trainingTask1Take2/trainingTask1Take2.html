@@ -1,0 +1,80 @@
+<template>
+    <lightning-card>
+       <div class="slds-text-heading_large slds-align_absolute-center">Create Your {objectName}.</div>
+       <lightning-layout multiple-rows="true">
+
+        <lightning-layout-item padding="around-small" size="12">
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="6">
+                    <div class="page-section page-right">
+                        <div  class="slds-p-around_small"> <lightning-input type ="text" id ="Name" required="" label="Name" onchange={handle1}></lightning-input></div>
+                        <div class="slds-p-around_small"> <lightning-input type="checkbox" label="More than one person" name="input1" onchange={handle5}></lightning-input></div>
+                        <div  class="slds-p-around_small">   <lightning-input type="date" name="Date" label="Booking Date"  onchange={handle3} ></lightning-input></div>
+                        <div class="slds-p-around_small"> 
+                            <lightning-dual-listbox name="Activities"
+                            label="Select Activities" 
+                             source-label="Available"
+                            selected-label="Selected"
+                            field-level-help="Select favourite preferred Activities"
+                            options={options1}
+                            onchange={handleChange1}></lightning-dual-listbox>
+                            <div class="slds-box" >
+                            <p>Selected Activities are: {allValuess}</p>
+                            </div></div>
+
+                    </div></lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="6">
+                        <div class="page-section page-right">
+                            <div  class="slds-p-around_small"><lightning-input type ="text" id ="website" required="" label="Email" onchange={handle2}></lightning-input></div><div class="slds-p-around_small">  <lightning-combobox
+                                name="Requirement"
+                                label="Number of people"
+                                value={value}
+                                placeholder="Select Number"
+                                field-level-help="Select the number of people."
+                                options={options}
+                                onchange={handleChange} >
+                         
+                               </lightning-combobox></div>
+                            <div class="slds-p-around_small"><lightning-input type="datetime" name="DateandTime" label="Arrival Date and time"  onchange={handle4}  ></lightning-input></div>
+                        </div></lightning-layout-item>
+                </lightning-layout>
+                </lightning-layout-item>
+       </lightning-layout>
+       
+       <!-- <div  class="slds-p-around_small"><lightning-input type ="text" id ="Name" required="" label="Name" onchange={handle1}></lightning-input></div> 
+       <div class="slds-p-around_small"> <lightning-input type="date" name="Date" label="Booking Date"  onchange={handle3} ></lightning-input></div> -->
+       
+    
+       <!-- <p>Selected value is: {value1}</p> -->
+  
+
+           
+            
+          
+             
+                          
+              
+            
+       
+           <div class="slds-clearfix slds-p-right_small">
+
+                               <lightning-button variant="brand" label="Save"  onclick={SaveAccount} class="slds-float_right"></lightning-button>
+                            </div>
+                               <!-- <template if:true={accountid}>
+                            <p> Account's Id :{accountid}</p>
+                        </template>
+                       
+                        <template if:true={contactId}>
+                            <p> Contact's Id :{contactId}</p>
+                        </template> -->
+                   
+                    <!-- <div class="slds-clearfix">
+                        <lightning-button label="I am Right" class="slds-float_right"></lightning-button>
+                    </div> -->
+            
+             
+            
+        
+    </lightning-card>
+   
+</template>

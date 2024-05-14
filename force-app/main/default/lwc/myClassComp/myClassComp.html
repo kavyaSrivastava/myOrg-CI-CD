@@ -1,0 +1,16 @@
+<template>
+    <lightning-card>
+        <lightning-input type="text" label="Enter some text" onchange={onchange1}></lightning-input>
+        <template if:true={Account.data}>
+        <template for:each={Account.data} for:item="acc">
+        <lightning-layout key ={acc.Id}>
+            <li>{acc.Name}</li>
+        </lightning-layout>
+    </template>
+    </template>
+    
+        
+    
+    </lightning-card>
+    
+</template>

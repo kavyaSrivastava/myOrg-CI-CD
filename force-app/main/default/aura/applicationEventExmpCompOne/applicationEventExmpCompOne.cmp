@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+<aura:registerEvent name="compOneMsg" type="c:apeEvent"/>
+<h1> Hello! I am component 1.</h1>
+<div class="row">
+    <lightning:button label="Send value to child" iconName="utility:comments" iconPosition="left"  variant="brand" onclick="{!c.sendValue }" />
+
+</div>
+<br/><br/>
+
+</aura:component>

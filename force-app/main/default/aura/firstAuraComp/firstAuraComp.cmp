@@ -1,0 +1,16 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+<aura:attribute name ="newMessage" type="String" default="First Aura Component" />
+<aura:attribute name="message" type="String" default="name"></aura:attribute>
+<lightning:card>
+   
+    <h2>{!v.newMessage}</h2>
+<div>
+    <lightning:button label="You look nice today."
+    onclick ="{!c.handleOnClick}"/>
+
+    <lightning:button label ="Today is going to be a good day :)" 
+    onclick="{!c.handleOnClick}"/>
+    <h2>{!v.message}</h2>
+</div>
+</lightning:card>
+</aura:component>

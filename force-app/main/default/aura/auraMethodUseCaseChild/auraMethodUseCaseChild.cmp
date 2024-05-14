@@ -1,0 +1,6 @@
+<aura:component>
+    <aura:attribute name="parent" type="Aura.component"></aura:attribute>
+
+    <lightning:button variant="Brand" label="Invoke Parent Controller" title="Success" onclick="{! c.callParentMethod }"/>
+
+</aura:component>

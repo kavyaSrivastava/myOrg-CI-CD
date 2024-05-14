@@ -1,0 +1,16 @@
+<apex:page id="portalTestApp" sideBar="false" showHeader="false">
+   <apex:includeLightning />
+       <div id="Lightning"></div>
+    <script>
+        $Lightning.use('c:portalTestApp', function(){
+            $Lightning.createComponent(
+                'c:containerComp',
+				{},
+				'Lightning',
+				function(cmp){
+				  //do some stuff
+				}
+            );
+        });
+    </script>
+</apex:page>

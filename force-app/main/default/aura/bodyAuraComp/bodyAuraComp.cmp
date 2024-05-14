@@ -1,0 +1,196 @@
+<aura:component controller="CollectingOpportunity" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute type="Opportunity[]" name="oppList" />
+    <aura:attribute type="List" name="mycolumns" />
+    <aura:handler name="init" value="{!this}" action="{!c.fetchOpp}" />
+    <aura:attribute name="paginationList" type="list" />
+    <aura:attribute name="showNewForm" type="Boolean" default="false" />
+    <aura:attribute name="showEditForm" type="Boolean" default="false" />
+
+    <aura:attribute name="currentPageNumber" type="Integer" default="1" />
+    <aura:attribute name="pageSize" type="Integer" default="10" />
+    <aura:attribute name="totalPages" type="Integer" default="0" />
+    <aura:attribute name="pageList" type="List" />
+    <aura:attribute name="totalRecords" type="Integer" />
+    <aura:attribute name="currentPageRecords" type="Integer" />
+    <!-- sorting data variables -->
+    <!-- <aura:attribute name="columns" type="List"/> -->
+    <aura:attribute name="sortedBy" type="String" default="Name" />
+    <aura:attribute name="sortedDirection" type="string" default="asc" />
+    <aura:attribute name="searchText" type="String" default="" />
+    <aura:attribute name="isclosedvalue" type="Boolean" default="true" />
+    <aura:attribute name="iconforheading" type="String" default="" />
+    <aura:attribute name="heading" type="String" default="" />
+
+    <aura:attribute name="fieldMap" type="Map" />
+
+    <aura:attribute name="newName" type="String" default="" />
+    <aura:attribute name="newDate" type="date" default="" />
+    <aura:attribute name="newAmount" type="Decimal"  />
+    <aura:attribute name="recId" type="String" />
+    <aura:attribute name="stageName" type="String" />
+
+    <aura:attribute name="opportunity" type="Opportunity" default="{'sobjectType':'Opportunity', 
+     
+    'Name': '',
+    'CloseDate': '',
+    'Amount': '',
+    'StageName': ''}" />
+
+
+    <!-- <lightning:card title="Opportunity Data with Sorting and Pagination" iconName="standard:opportunity"> -->
+        <lightning:card title="{!v.heading}" iconName="{!v.iconforheading}">
+
+      
+            <lightning:layout>
+                <lightning:layoutItem size="3-of-12"></lightning:layoutItem>
+                <lightning:layoutItem padding="around-small" size="6-of-12">
+                    <lightning:input type="search" placeholder="Search Opportunity" value="{!v.searchText}"
+                        onchange="{!c.handleSearch}">
+                    </lightning:input><br /><br />
+                   
+                </lightning:layoutItem>
+                <lightning:layoutItem size="2-of-12"></lightning:layoutItem>
+                <lightning:layoutItem padding="around-small" size="1-of-12" >
+                    <lightning:button iconName="utility:add" variant="brand" label="New" title="Brand action"
+                        onclick="{! c.handleClick }" />
+    
+                </lightning:layoutItem>
+            </lightning:layout>
+                <lightning:tabset>
+                            <lightning:tab label="IsClosed" id="one" onactive="{!c.fetchclosed}"></lightning:tab>
+                            <lightning:tab label="IsOpen" id="two" onactive="{!c.fetchclosed}"></lightning:tab>
+                </lightning:tabset>
+            <lightning:layoutItem padding="around-small" size="12">
+                <!-- data="{!v.oppList}" -->
+                <lightning:datatable data="{!v.paginationList}" columns="{!v.mycolumns}" keyField="id"
+                    hideCheckboxColumn="true" onrowaction="{!c.handleRowAction}" onsort="{!c.updateSorting}"
+                    sortedBy="{!v.sortedBy}" sortedDirection="{!v.sortedDirection}" />
+            </lightning:layoutItem>
+            <lightning:layout>
+
+            <div class="slds-align_absolute-center">
+                <lightning:button label="First" iconName="utility:left" iconPosition="left" onclick="{!c.onFirst}"
+                    disabled="{! v.currentPageNumber == 1}" />
+                <lightning:button label="Previous" disabled="{!v.currentPageNumber == 1}" onclick="{!c.handlePrevious}"
+                    variant="brand" iconName="utility:back" name="previous" />
+
+                <span class="slds-badge slds-badge_lightest" style="margin-right: 10px;margin-left: 10px;">
+                    Page {!v.currentPageNumber} out of {!v.totalPages}
+                </span>
+
+                <lightning:button label="Next" disabled="{!v.currentPageNumber == v.totalPages}"
+                    onclick="{!c.handleNext}" variant="brand" iconName="utility:forward" iconPosition="right"
+                    name="next" />
+                <lightning:button label="Last" iconName="utility:right" iconPosition="right" onclick="{!c.onLast}"
+                    disabled="{!v.currentPageNumber == v.totalPages}" />
+            </div>
+        </lightning:layout>
+
+        <!--     Edit        Form     -->
+
+        <aura:if isTrue="{!v.showEditForm}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                            alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create New Opportunity
+                        </h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p>
+                            <!-- <b>Modals/Popup Box are used to display content in a layer above the app. This paradigm is used in cases such as the creation or editing of a record, as well as various types of messaging and wizards.
+                            </b> -->
+                        <div class="c-container">
+                            <lightning:layout verticalAlign="stretch" multipleRows="true" class="x-large">
+                                <lightning:layoutItem flexibility="auto" padding="around-small" class="custom-box">
+                                    <div class="slds-p-around_medium lgc-bg">
+                                        <lightning:input type="text" value="{!v.newName}" required="" label="Name">
+                                        </lightning:input>
+                                        <lightning:input type="date" value="{!v.newDate}" required=""
+                                            label="Close Date"></lightning:input>
+
+                                    </div>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem flexibility="auto" padding="around-small" class="custom-box">
+                                    <lightning:input type="number" value="{!v.newAmount}" label="Amount" step="3"
+                                        ></lightning:input>
+
+                                </lightning:layoutItem>
+
+                            </lightning:layout>
+                        </div>
+
+                        </p>
+                    </div>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{! c.closeModel }" />
+                        <lightning:button variant="brand" label="OK" title="OK" onclick="{!c.submitEditDetails}" />
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+
+        <!-- New       record           Form-->
+
+        <aura:if isTrue="{!v.showNewForm}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                            alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create New Opportunity
+                        </h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <div class="c-container">
+                            <lightning:layout verticalAlign="stretch" multipleRows="true" class="x-large">
+                                <lightning:layoutItem flexibility="auto" padding="around-small" class="custom-box">
+                                    <div class="slds-p-around_medium lgc-bg">
+                                        <lightning:input type="text" value="{!v.opportunity.Name}" required="true"
+                                            label="Name"></lightning:input>
+                                        <lightning:input type="date" value="{!v.opportunity.CloseDate}" required="true"
+                                            label="Close Date"></lightning:input>
+
+                                    </div>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem flexibility="auto" padding="around-small" class="custom-box">
+                                    <lightning:input type="number" value="{!v.opportunity.Amount}" label="Amount"
+                                        formatter="currency" onchange="{handleNewAmount}"></lightning:input>
+                                    <lightning:select aura:id="industryPicklist" value="{!v.opportunity.StageName}"
+                                        onchange="{!c.handleOnChange}" name="industryPicklist" label="Stage Name"
+                                        required="true">
+                                        <option value="">--None--</option>
+                                        <aura:iteration items="{!v.fieldMap}" var="i" indexVar="key">
+                                            <option text="{!i.value}" value="{!i.key}"
+                                                selected="{!i.key==v.opportunity.StageName}" />
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </lightning:layoutItem>
+
+                            </lightning:layout>
+                        </div>
+
+                        
+                    </div>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{!c.closeModel }" />
+                        <lightning:button variant="brand" label="OK" title="OK" onclick="{!c.submitDetails}" />
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+
+    </lightning:card>
+
+</aura:component>

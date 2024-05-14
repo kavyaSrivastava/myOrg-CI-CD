@@ -1,0 +1,24 @@
+<aura:component controller="fetchAccount" implements="flexiPage:availableForAllPageTypes">
+    <aura:attribute name="accList" type="List"/>
+    <aura:attribute name="searchText" type="String" default=""/>
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+    <aura:attribute name="searchedData" type="List"/>
+    <!-- <lightning:input name="input1" label="Enter some text" /> -->
+    <div>
+        <lightning:input  name="enter-search" type="search" label="Search Opportunity" 
+        value="{!v.searchText}"
+        onchange="{!c.handleSearch}"/>
+        <!-- <lightning:input
+            aura:id="enter-search"
+            name="enter-search"
+            label="Search when user hits the 'enter' key"
+            type="search"
+        /> -->
+    </div>
+    
+    <aura:iteration items="{!v.searchedData}" var="item">
+        {!item.Name};<br/>
+    </aura:iteration>
+
+
+</aura:component>

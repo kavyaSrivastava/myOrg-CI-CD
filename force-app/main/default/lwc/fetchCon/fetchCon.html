@@ -1,0 +1,14 @@
+<template>
+    <lightning-card>
+        <lightning-input type="text" label ="Enter Email" onchange={onchange1}></lightning-input>
+        <template if:true={Contact.data}>
+            <template for:each={Contact.data} for:item="con">
+            <lightning-layout key = {con.Id}>
+                <li>{con.Email}</li>
+            </lightning-layout>
+            </template>
+
+        </template>
+    </lightning-card>
+    
+</template>

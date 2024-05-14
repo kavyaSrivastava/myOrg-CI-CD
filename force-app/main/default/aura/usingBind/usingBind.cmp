@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="numItems"  type="String" default="Hii"></aura:attribute>
+    <aura:handler name="change" value="{!v.numItems}" action="{!c.itemsChange}"/>
+    <lightning:input type="text"  label="Enter some text" value="{!v.numItems}"></lightning:input>
+    <lightning:button label="Neutral" title="Neutral action" onclick="{! c.handleClick }"/>
+</aura:component>

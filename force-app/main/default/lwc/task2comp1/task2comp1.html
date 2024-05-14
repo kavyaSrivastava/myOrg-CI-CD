@@ -1,0 +1,25 @@
+<template>
+    <lightning-card>
+        <lightning-layout vertical-align="stretch" multiple-rows="true" class="x-large">
+            <lightning-layout-item flexibility="auto" padding="around-small" class="custom-box">
+                <!-- <div class="slds-m-around_medium"> -->
+                     <img src={companyLogoUrl} width="250" height="200" onclick={handleImageClick}>;
+                <!-- </div> -->
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" padding="around-small" class="custom-box">
+                
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" padding="around-small" class="custom-box">
+                
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" padding="around-small" class="custom-box">
+                <lightning-avatar size="large"   variant="circle" src={profilePictureUrl}  fallback-icon-name="standard:person_account"
+                 alternative-text={name} class="slds-m-right_small"></lightning-avatar>
+                <!-- <img src={profilePictureUrl} width="150" height="100"> -->
+            </lightning-layout-item>
+        
+        </lightning-layout>
+        
+    </lightning-card>
+    
+</template>

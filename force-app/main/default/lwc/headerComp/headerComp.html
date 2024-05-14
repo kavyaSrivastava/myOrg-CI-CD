@@ -1,0 +1,116 @@
+<template>
+    <!-- <lightning-card> -->
+        <!-- vertical-align="stretch" -->
+        <lightning-layout multiple-rows="true" class="x-small" style="background-color: rgb(184, 194, 219)">
+            <lightning-layout-item size="6" flexibility="auto" padding="around-small" class="slds-text-align_left">
+
+                <img src={companyLogoUrl} width="250" height="200" onclick={handleImageClick} style="background-color: rgb(184, 194, 219)">
+
+            </lightning-layout-item>
+
+            <!-- <lightning-layout-item flexibility="auto" padding="around-small" class="custom-box">
+                
+            </lightning-layout-item> -->
+
+            <lightning-layout-item size="6" flexibility="auto" padding="around-small" class="slds-text-align_right">
+                <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+                    <lightning-avatar id="target-1" size="large" variant="circle" src={profilePictureUrl}
+                        fallback-icon-name="standard:person_account" alternative-text={name} class="slds-m-right_small"
+                        onclick={handleclick}>
+                    </lightning-avatar>
+
+                    <div if:true={isvisible}>
+                        <div class="slds-dropdown slds-dropdown_large slds-dropdown_right slds-nubbin_top-right slds-p-top_small slds-p-bottom_small slds-theme_alert-texture">
+
+                            <lightning-layout multiple-rows="true" class="slds-theme_inverse">
+                                <!-- <div class="slds-box slds-theme_shade "> -->
+                                   <lightning-layout-item padding="around-small" size="12"  >
+                                        <div class="page-section page-header slds-align_absolute-center slds-text-heading_large">
+                                            <h2>Profile Detail</h2>
+                                        </div>
+                                    </lightning-layout-item>
+                                <!-- </div> -->
+                            
+                            </lightning-layout>
+
+                            <lightning-layout multiple-rows="true">
+
+                                <lightning-layout-item padding="around-small" size="12">
+                                    <div class="slds-align_absolute-center">
+                                        <img src={profilePictureUrl}>
+                                       
+                                    </div>
+                                </lightning-layout-item> 
+
+
+
+                                <lightning-layout-item padding="around-small" size="12">
+                                    <div class="slds-align_absolute-center slds-text-heading_medium">
+                                        {currentusermail}
+
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout><hr>
+
+                            <lightning-layout multiple-rows="true">
+                                <lightning-layout-item size="4" padding="arround-small" class="slds-text-align_left slds-p-left_small slds-text-heading_medium">
+                                    <div >
+                                        Name :</div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="1" padding="arround-small"></lightning-layout-item>
+                                <lightning-layout-item size="7" padding="arround-small" class="slds-text-align_left slds-p-right_small slds-text-heading_medium">
+                                    <div >
+                                        {name}
+                                    </div>
+                                </lightning-layout-item>
+
+                            </lightning-layout>
+                            <lightning-layout multiple-rows="true">
+                                <lightning-layout-item size="4" padding="arround-small" class="slds-text-align_left slds-p-left_small slds-text-heading_medium">
+                                    <div >
+                                        Phone :</div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="1" padding="arround-small"></lightning-layout-item>
+                                <lightning-layout-item size="7" padding="arround-small" class="slds-text-align_left slds-p-right_small slds-text-heading_medium">
+                                    <div >
+                                        {currentUsserPhone}
+                                    </div>
+                                </lightning-layout-item>
+
+                            </lightning-layout>
+                            <lightning-layout multiple-rows="true">
+                                <lightning-layout-item size="4" padding="arround-small" class="slds-text-align_left slds-p-left_small slds-text-heading_medium">
+                                    <div >
+                                        Company :</div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="1" padding="arround-small"></lightning-layout-item>
+                                <lightning-layout-item size="7" padding="arround-small" class="slds-text-align_left slds-p-right_small slds-text-heading_medium">
+                                    <div >
+                                        {company}
+                                    </div>
+                                </lightning-layout-item>
+
+                            </lightning-layout>
+                            
+                            
+
+
+
+
+
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </lightning-layout-item>
+
+        </lightning-layout>
+
+    <!-- </lightning-card> -->
+
+</template>

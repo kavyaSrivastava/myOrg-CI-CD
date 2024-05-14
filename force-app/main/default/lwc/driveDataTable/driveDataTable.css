@@ -1,0 +1,10 @@
+.slds-box1{
+    /* background: #FFB6C1;
+  transition: background-color 2s ease-out 100ms */
+  box-shadow: 0px 2px 5px rgb(123, 122, 122);
+  border-radius: 15px;
+  transition: background-color 2s ease-out 100ms
+}
+.slds-box1:hover{
+    background-color: rgb(247, 160, 61);
+}

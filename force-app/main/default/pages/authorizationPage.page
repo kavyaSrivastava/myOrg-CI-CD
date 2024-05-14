@@ -1,0 +1,17 @@
+<apex:page id="portalTestApp" sideBar="false" showHeader="false">
+    <apex:includeLightning />
+    <div id="Lightning"></div>
+ <script>
+     $Lightning.use('c:portalTestApp', function(){
+         $Lightning.createComponent(
+             'c:googleAuthService',
+            //  'c:driveDataTable',
+             {},
+             'Lightning',
+             function(cmp){
+               //do some stuff
+             }
+         );
+     });
+ </script>
+</apex:page>

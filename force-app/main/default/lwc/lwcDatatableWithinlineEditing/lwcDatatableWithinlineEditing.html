@@ -1,0 +1,91 @@
+<template>
+    <lightning-card title="Account Related Contacts">
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered
+    slds-table_col-bordered"
+    aria-label="Example table of Opportunities with vertical borders">
+    <thead>
+    <tr class="slds-line-height_reset">
+    <th class="" scope="col">
+    <div class="slds-truncate" title="Sr">Sr. No.</div>
+    </th>
+    <th class="" scope="col">
+    <div class="slds-truncate" title="Contact Name">Contact Name</div>
+    </th>
+    <th class="" scope="col">
+    
+    <div class="slds-truncate" title="Phone">Phone</div>
+    </th>
+    </tr>
+    </thead>
+    <template if:true={contactData}>
+    <template for:each={contactData} for:item="con" for:index="i">
+    <tbody key={con.id}>
+    <tr class="slds-hint-parent">
+    <td data-label="Sr" scope="row">
+    {i}
+    </td>
+    <template if:false={con.isEdit}>
+    <td data-label="Contact Name" scope="row">
+    {con.LastName}
+    </td>
+    <td data-label="Phone" scope="row">
+    {con.Phone}
+    </td>
+    <td data-label="Ask edit or not" scope="row">
+    <lightning-button label="Edit Record" onclick={askEditOrNotHandler}
+    variant="success" data-id={i} value={con.Id}>
+    </lightning-button>
+    </td>
+    <td data-label="Ask edit or not" scope="row">
+    <lightning-button label="Delete Record" onclick={deleteRecordHandler}
+    variant="destructive" data-id={i} value={con.Id}>
+    </lightning-button>
+    </td>
+    </template>
+    <template if:true={isRead}>
+    <template if:true={con.isEdit}>
+    <td data-label="Contact Name" scope="row">
+    <lightning-input type="text" class="Name" name="acName"
+    value={con.LastName}
+    onchange={getInputAndUpdateHandler}></lightning-input>
+    </td>
+    <td data-label="Phone" scope="row">
+    <lightning-input type="text" class="Name" name="Phone" value={con.Phone}
+    onchange={getInputAndUpdateHandler}></lightning-input>
+    </td>
+    
+    <td data-label="Save edited Account" scope="row">
+    <lightning-button label="Save" onclick={saveEditedAccountHandler}
+    variant="success"
+    value={con.Id}></lightning-button>
+    </td>
+    <td data-label="cancel or not edit" scope="row">
+    <lightning-button label="Cancel" onclick={cancelEditHandler}
+    data-id={i}></lightning-button>
+    </td>
+    </template>
+    </template>
+    <template if:true={con.isDelete}>
+    <td data-label="Contact Name" scope="row">
+    {con.LastName}
+    </td>
+    <td data-label="Phone" scope="row">
+    {con.Phone}
+    </td>
+    <td data-label="delete" scope="row">
+    <lightning-button label="Confirm" value={con.Id}
+    onclick={deleteEditHandler}
+    data-id={i}></lightning-button>
+    </td>
+    <td data-label="cancel or not edit" scope="row">
+    <lightning-button label="Cancel" onclick={cancelEditHandler}
+    data-id={i}></lightning-button>
+    </td>
+    </template>
+    </tr>
+    </tbody>
+    </template>
+    </template>
+    </table>
+    </lightning-card>
+    </template>

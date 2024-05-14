@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Account Card">
+        <lightning-input  label="Account" onchange={handlechange}></lightning-input>
+        <lightning-datatable key-field="id"
+                            data={data}
+                            columns={columns}></lightning-datatable>
+    </lightning-card>
+    <lightning-button variant="brand" label="Sort in ASC" onclick={handleclick}></lightning-button>
+    <lightning-button variant="brand" label="Sort in DESC" onclick={handleclick1}></lightning-button>
+</template>

@@ -1,0 +1,50 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-bottom_large">
+        <lightning-button variant="brand-outline" label="List view" icon-name="utility:list"
+         icon-position="left" title="Click to vie files in List Form" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+         <lightning-button variant="brand-outline" label="Grid view" icon-name="utility:tile_card_list"
+         icon-position="left" title="Click to vie List in Grid Form" onclick={handleClickOnGrid} class="slds-m-left_x-small"></lightning-button>
+         </div>
+         <template if:true={listView}>
+            <div class="slds-box" style="height: 900px;">
+    
+                <lightning-datatable
+                key-field="id"
+                data={data}
+                hide-checkbox-column
+                columns={columns}
+                onrowaction={handleRowAction}>
+        </lightning-datatable>
+        </div>
+
+         </template>
+         <template if:true={gridView}>
+            <lightning-layout multiple-rows="true">
+                <template for:each={data} for:item="element">
+                    <lightning-layout-item padding="around-small" size="2" key={element.id}>
+                        <div class="slds-box1" style="width: 70%; height:1%">
+                            <ul>
+                                <li><img src={element.thumbnailLink} style="width: 100px; height:90px"
+                                        class="slds-align_absolute-center slds-p-top_small slds-m-bottom_medium"></li>
+                                <li>
+                                    <p class="slds-align_absolute-center slds-truncate slds-p-top_small slds-m-bottom_medium">
+                                        {element.title}</p>
+                                </li>
+                            </ul>
+                            <div class="slds-m-top_large">
+                                <lightning-icon data-id={element.id} icon-name="utility:preview" alternative-text="View"
+                                class="slds-m-left_medium"  title="View" onclick={handleView} style="cursor: pointer;"></lightning-icon>
+                                <lightning-icon data-id={element.id} icon-name="utility:download" alternative-text="Download"
+                                    title="Download" onclick={handleDownload} class="slds-float_right slds-m-right_small" style="cursor: pointer;"></lightning-icon>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+         </template>
+
+    </lightning-card>
+   
+    
+</template>

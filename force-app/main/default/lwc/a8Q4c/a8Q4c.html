@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-text_x-large" >
+        <lightning-input label="search Account" onchange={handlechange}></lightning-input>
+        <lightning-card label="Account card">
+            <lightning-datatable key-field="id"
+                                 data={data} columns={columns}>
+                                
+            </lightning-datatable>
+        </lightning-card>
+        <br>
+
+    <lightning-button label="Button" variant="brand" onclick={onclickchange}>
+    </lightning-button>
+
+
+    </div>
+</template>

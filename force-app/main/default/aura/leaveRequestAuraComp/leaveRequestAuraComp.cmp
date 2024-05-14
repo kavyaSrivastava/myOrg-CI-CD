@@ -1,0 +1,18 @@
+<aura:component controller="FetchAccounts" implements="lightning:isUrlAddressable,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+access="global">
+<aura:attribute type="Account[]" name="acctList"/>
+<aura:attribute name="mycolumns" type="List"/>
+<aura:handler name="init" value="{!this}" action="{!c.fetchAcc}"/>
+<lightning:empApi aura:id="empApi"/>
+<aura:attribute name="subscription" type="Map" />
+<!-- <lightning:messageChannel type="Counting_Update__c" onMessage="{!c.handleMessage}" aura:id="countingUpdateId" scope="APPLICATION"/> -->
+
+<!-- <lightning:messageChannel type="Counting_Update__c"  /> -->
+<lightning:datatable data="{! v.acctList }"
+                     columns="{! v.mycolumns }"
+                     keyField="id"
+                     hideCheckboxColumn="true"
+                     onrowaction="{!c.handleRowAction}"/>
+    
+
+</aura:component>

@@ -1,0 +1,185 @@
+<aura:component controller="GetUserPic" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="photo" type="String" default="First Aura Component" />
+    <aura:attribute name="Name1" type="String" />
+    <aura:attribute name="Phone1" type="String" />
+    <!-- <aura:attribute name="Name1" type="String" /> -->
+    <aura:attribute name="Company1" type="String" />
+    <aura:attribute name="Country1" type="String" />
+
+
+    <aura:attribute name="name" type="String" default="defaultname" />
+    <aura:attribute name="currentUsserPhone" type="String" default="defaultPhone" />
+    <aura:attribute name="company" type="String" default="defaultCompany" />
+    <aura:attribute name="showModal" type="boolean" default="false" />
+    <aura:attribute name="country" type="String" default="" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="heading" type="String" default="" />
+
+
+
+
+
+    <lightning:layout class="slds-theme_inverse">
+
+        <lightning:layoutItem padding="around-small" size="12" class="slds-align_absolute-center slds-text-heading_large">
+
+            <b>{!v.heading}</b>
+
+        </lightning:layoutItem>
+        <!-- </div> -->
+
+    </lightning:layout>
+
+    <lightning:layout>
+        <!-- multiple-rows="true" -->
+
+        <lightning:layoutItem padding="around-small" size="12">
+            <div class="slds-align_absolute-center">
+                <img src="{!v.photo}" />
+
+            </div>
+        </lightning:layoutItem>
+
+
+
+        <lightning:layoutItem padding="around-small" size="12">
+            <div class="slds-align_absolute-center slds-text-heading_medium">
+                {!v.currentusermail}
+
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+    <hr />
+
+    <lightning:layout>
+        <!-- multiple-rows="true" -->
+        <lightning:layoutItem size="4" padding="arround-small"
+            class="slds-text-align_right slds-p-left_small slds-text-heading_medium">
+            <div>
+                {!v.Name1} :</div>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="1" padding="arround-small"></lightning:layoutItem>
+        <lightning:layoutItem size="7" padding="arround-small"
+            class="slds-text-align_left slds-p-right_small slds-text-heading_medium">
+            <div>
+                {!v.name}
+            </div>
+        </lightning:layoutItem>
+
+    </lightning:layout>
+    <lightning:layout>
+        <!-- multiple-rows="true" -->
+        <lightning:layoutItem size="4" padding="arround-small"
+            class="slds-text-align_right slds-p-left_small slds-text-heading_medium">
+            <div>
+                {!v.Phone1}:</div>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="1" padding="arround-small"></lightning:layoutItem>
+        <lightning:layoutItem size="7" padding="arround-small"
+            class="slds-text-align_left slds-p-right_small slds-text-heading_medium">
+            <div>
+                {!v.currentUsserPhone}
+            </div>
+        </lightning:layoutItem>
+
+    </lightning:layout>
+    <lightning:layout>
+        <!-- multiple-rows="true" -->
+        <lightning:layoutItem size="4" padding="arround-small"
+            class="slds-text-align_right slds-p-left_small slds-text-heading_medium">
+            <div>
+                {!v.Company1} :</div>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="1" padding="arround-small"></lightning:layoutItem>
+        <lightning:layoutItem size="7" padding="arround-small"
+            class="slds-text-align_left slds-p-right_small slds-text-heading_medium">
+            <div>
+                {!v.company}
+            </div>
+        </lightning:layoutItem>
+
+    </lightning:layout>
+    <lightning:layout>
+        <!-- multiple-rows="true" -->
+        <lightning:layoutItem size="4" padding="arround-small"
+            class="slds-text-align_right slds-p-left_small slds-text-heading_medium">
+            <div>
+                {!v.Country1} :</div>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="1" padding="arround-small"></lightning:layoutItem>
+        <lightning:layoutItem size="7" padding="arround-small"
+            class="slds-text-align_left slds-p-right_small slds-text-heading_medium">
+            <div>
+                {!v.country}
+            </div>
+        </lightning:layoutItem>
+
+    </lightning:layout>
+    <lightning:layout>
+
+    <lightning:layoutItem size ="4-of-12"></lightning:layoutItem>
+    <lightning:layoutItem size ="4-of-12" class="slds-p-top_xx-large">
+        <lightning:button variant="brand" label="Edit" title="Edit" onclick="{!c.handleClick}" />
+
+    </lightning:layoutItem>
+
+    <lightning:layoutItem size ="4-of-12"></lightning:layoutItem>
+
+    </lightning:layout>
+    <!-- Edit Modal -->
+
+    <aura:if isTrue="{!v.showModal}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                            alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit User Detail
+                        </h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p>
+                            <!-- <b>Modals/Popup Box are used to display content in a layer above the app. This paradigm is used in cases such as the creation or editing of a record, as well as various types of messaging and wizards.
+                            </b> -->
+                        <div class="c-container">
+                            <lightning:layout verticalAlign="stretch" multipleRows="true" class="x-large">
+                                <lightning:layoutItem flexibility="auto" padding="around-small" class="custom-box">
+                                    <div class="slds-p-around_medium lgc-bg">
+                                        <lightning:input type="text" value="{!v.name}" required="" label="Name">
+                                        </lightning:input>
+                                        <lightning:input type="text" value="{!v.currentUsserPhone}" required=""
+                                            label="Phone"></lightning:input>
+
+                                    </div>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem flexibility="auto" padding="around-small" class="custom-box">
+                                    <lightning:input type="text" value="{!v.company}" label="Company"
+                                         onchange="{handleNewAmount}"></lightning:input>
+                                         <lightning:input type="text" value="{!v.country}" label="Country"></lightning:input>
+
+                                </lightning:layoutItem>
+
+                            </lightning:layout>
+                        </div>
+
+                        </p>
+                    </div>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{!c.closeModel }" />
+                        <lightning:button variant="brand" label="OK" title="OK" onclick="{!c.submitDetails}" />
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+
+
+
+
+
+
+</aura:component>

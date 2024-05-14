@@ -1,0 +1,10 @@
+<template>
+    <lightning-card>
+        <lightning-input label="Enter UserName:" onchange={handleName}></lightning-input>
+        <lightning-input label="Enter Password:" onchange={handlePass}></lightning-input>
+        <lightning-button label="LOGIN" onclick={handleLogin}></lightning-button>
+        <p if:true={result}>You are successfully logged in.</p>   
+    </lightning-card>
+    
+    
+</template>

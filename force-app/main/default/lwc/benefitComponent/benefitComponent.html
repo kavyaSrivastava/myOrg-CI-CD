@@ -1,0 +1,39 @@
+<template>
+    <lightning-card>
+        <table>
+
+            <thead>
+                <tr>
+                    <th class="enrolled" scope="col">Enrolled</th>
+                    <th class="silver" scope="col">Silver</th>
+                    <th class="gold" scope="col">Gold</th>
+                    <th class="platinum" scope="col">Platinum</th>
+                </tr>
+            </thead>
+        </table>
+
+        <lightning-accordion class="example-accordion">
+            <lightning-accordion-section name="A"  label={salesBenefit} onclick={handlesalesClick} >
+                <div class="tabledatabg">
+                    <lightning-datatable key-field="Id"  data={sectiondata} columns={column} hide-checkbox-column="true">
+                    </lightning-datatable>
+                </div>
+              
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="B" label={marketingbenefit} onclick={handlesalesClick}>
+                <lightning-datatable key-field="Id" data={sectiondata} columns={column} hide-checkbox-column="true" >
+                </lightning-datatable>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="C" label={enhancementbenefit} onclick={handlesalesClick}>
+                <lightning-datatable key-field="Id" data={sectiondata} columns={column} hide-checkbox-column="true" >
+                </lightning-datatable>
+            </lightning-accordion-section>
+        </lightning-accordion>
+    </lightning-card>
+    <lightning-input type="email" label="Email" max-length="10"
+        message-when-too-long="Your email address must not be more than 50 characters.">
+    </lightning-input>
+
+</template>

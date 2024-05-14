@@ -1,0 +1,127 @@
+<aura:component controller="GetUserPic" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="newMessage" type="String" default="First Aura Component" />
+    <aura:attribute name="isVisible" type="String" default="false" />
+    <aura:attribute name="name" type="String" default="defaultname" />
+    <aura:attribute name="currentUsserPhone" type="String" default="defaultPhine" />
+    <aura:attribute name="company" type="String" default="defaultCompany" />
+
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <lightning:card>
+
+    
+        <!-- <div class="c-container"> -->
+            <lightning:layout>
+                <lightning:layoutItem padding="around-small" size="6">
+                    <img src="{!$Resource.CloudAnalogyLogo}" onclick="{!c.handleImageClick}" height="200" width="200"
+                        size="small" />
+
+                </lightning:layoutItem>
+
+                <lightning:layoutItem size="6" flexibility="auto" padding="around-small" class="slds-text-align_right">
+                    <div class="slds-dropdown-trigger slds-dropdown-trigger_click sldsIs-open">
+                        <lightning:avatar id="target-1" size="large" src="{!v.newMessage}" onclick="{!c.handleClick}"
+                            fallbackIcon-name="standard:person_account" class="slds-m-right_small">
+
+
+                        </lightning:avatar>
+                        <aura:if isTrue="{!v.isVisible}">
+                            <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+
+                            
+                        
+                        <div class="slds-dropdown slds-dropdown_large slds-dropdown_right  slds-nubbin_top-right slds-p-top_small slds-p-bottom_small slds-theme_alert-texture">
+                            <!--  slds-p-bottom_small slds-theme_alert-texture -->
+                               
+                            <lightning:layout  class="slds-theme_inverse">
+                                <!-- multiple-rows="true" -->
+                                <!-- <div class="slds-box slds-theme_shade "> -->
+                                <lightning:layoutItem padding="around-small" size="12">
+                                    <div
+                                        class="page-section page-header slds-align_absolute-center slds-text-heading_large">
+                                        <h2>Profile Detail</h2>
+                                    </div>
+                                </lightning:layoutItem>
+                                <!-- </div> -->
+
+                            </lightning:layout>
+
+                            <lightning:layout   >
+                                <!-- multiple-rows="true" -->
+
+                                <lightning:layoutItem padding="around-small" size="12">
+                                    <div class="slds-align_absolute-center">
+                                        <img src="{!v.newMessage}"/>
+
+                                    </div>
+                                </lightning:layoutItem>
+
+
+
+                                <lightning:layoutItem padding="around-small" size="12">
+                                    <div class="slds-align_absolute-center slds-text-heading_medium">
+                                        {!v.currentusermail}
+
+                                    </div>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            <hr/>
+
+                            <lightning:layout>
+                                 <!-- multiple-rows="true" -->
+                                <lightning:layoutItem size="4" padding="arround-small"
+                                    class="slds-text-align_left slds-p-left_small slds-text-heading_medium">
+                                    <div>
+                                        Name :</div>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="1" padding="arround-small"></lightning:layoutItem>
+                                <lightning:layoutItem size="7" padding="arround-small"
+                                    class="slds-text-align_left slds-p-right_small slds-text-heading_medium">
+                                    <div>
+                                        {!v.name}
+                                    </div>
+                                </lightning:layoutItem>
+
+                            </lightning:layout>
+                            <lightning:layout >
+                                <!-- multiple-rows="true" -->
+                                <lightning:layoutItem size="4" padding="arround-small"
+                                    class="slds-text-align_left slds-p-left_small slds-text-heading_medium">
+                                    <div>
+                                        Phone :</div>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="1" padding="arround-small"></lightning:layoutItem>
+                                <lightning:layoutItem size="7" padding="arround-small"
+                                    class="slds-text-align_left slds-p-right_small slds-text-heading_medium">
+                                    <div>
+                                        {!v.currentUsserPhone}
+                                    </div>
+                                </lightning:layoutItem>
+
+                            </lightning:layout>
+                            <lightning:layout >
+                                <!-- multiple-rows="true" -->   
+                                <lightning:layoutItem size="4" padding="arround-small"
+                                    class="slds-text-align_left slds-p-left_small slds-text-heading_medium">
+                                    <div>
+                                        Company :</div>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="1" padding="arround-small"></lightning:layoutItem>
+                                <lightning:layoutItem size="7" padding="arround-small"
+                                    class="slds-text-align_left slds-p-right_small slds-text-heading_medium">
+                                    <div>
+                                        {!v.company}
+                                    </div>
+                                </lightning:layoutItem>
+
+                            </lightning:layout>
+                            </div>
+                        </div>
+                        </aura:if>
+                                        
+                        </div>
+                    </lightning:layoutItem>
+            <!-- </lightning:layoutItem> -->
+            </lightning:layout>
+        </lightning:card>
+    </aura:component>

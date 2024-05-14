@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="My opp Record" icon-name="standard:contact">
+      <template lwc:if={opportunity.data}>
+        <div class="slds-m-around_medium">
+          <p>{name}</p>
+          <p>{stage}</p>
+          <p>{closeDate}</p>
+          <!-- <p><lightning-formatted-phone value={phone}></lightning-formatted-phone></p>
+          <p><lightning-formatted-email value={email}></lightning-formatted-email></p> -->
+        </div>
+      </template>
+      <template lwc:if={opportunity.error}>
+        <!-- <c-error-panel errors={opportunity.error}></c-error-panel> -->
+      </template>
+    </lightning-card>
+  </template>

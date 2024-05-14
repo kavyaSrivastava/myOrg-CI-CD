@@ -1,0 +1,91 @@
+/* tgold{
+    background-color: #e3e721;
+    color: #090909;
+  }
+tsilver{
+      background-color: #e8e8da;
+      color: #111010cf;
+    }
+tbronze{
+    background-color: #a46d10;
+    color: #090909;
+  }
+tfoot {
+  background-color: #365f74;
+  color: #0a0a0a;
+}
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  } */
+
+/* thead{
+    background-color: #c8e21e;
+
+  } */
+tfoot {
+    background-color: #2c5e77;
+    color: #fff;
+}
+
+tbody {
+    background-color: #e4f0f5;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid rgb(11, 10, 10);
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+caption {
+    caption-side: bottom;
+    padding: 10px;
+}
+
+th,
+td {
+    border: 1px solid rgb(160 160 160);
+    padding: 8px 10px;
+}
+
+td {
+    text-align: center;
+}
+
+.gold {
+    /* background-color : rgb(116, 80, 14); */
+    text-align: center;
+    background-image: linear-gradient(to right, rgb(123 58 19), rgb(211, 148, 53), rgb(123 58 19));
+    color: #111010;
+}
+
+.silver {
+    /* background-color :rgb(119, 116, 116); */
+    text-align: center;
+    background-image: linear-gradient(to right, rgb(139 135 135), #c3bebe9e, rgb(136, 131, 131));
+    color: #111010;
+}
+
+.platinum {
+    /* background-color : rgb(194, 189, 184); */
+    text-align: center;
+    background-image: linear-gradient(to right, rgb(194, 189, 184), white, rgb(194, 189, 184));
+    color: #111010;
+}
+
+.enrolled {
+    background-color: darkblue;
+    text-align: center;
+    /* background-image: linear-gradient(to right, rgba(0,0,139,1), white, rgba(0,0,139,1));  */
+    color: #e4d9d9;
+}
+
+.tabledatabg {
+    background-color: grey;
+}

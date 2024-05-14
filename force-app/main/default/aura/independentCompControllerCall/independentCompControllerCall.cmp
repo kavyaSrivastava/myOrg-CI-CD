@@ -1,0 +1,5 @@
+<aura:component extensible="true" implements="flexipage:availableForAllPageTypes">
+    <aura:method name="auraMeth" action="{!c.doAction}" ></aura:method>
+    <aura:attribute name="att" type="String" default="Not Done"></aura:attribute>
+      {!v.att}
+</aura:component>

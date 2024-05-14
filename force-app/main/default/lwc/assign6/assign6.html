@@ -1,0 +1,37 @@
+<template>
+    <lightning-card>
+        <lightning-combobox
+        placeholder="seclect an Account"
+        label="Select a account"
+        value={selectedValue}
+        options={options}
+        onchange={handleChange}>
+    </lightning-combobox>
+
+    </lightning-card>
+
+
+<template if:true={contactvisibility}>
+        <lightning-card title="Contacts">
+            <div>
+                <lightning-datatable key-field="Id"
+                    data={data}
+                    columns ={columns}></lightning-datatable>
+            
+            </div>
+
+        </lightning-card>
+    </template>
+    <template if:true={oppovisibility}>
+        <lightning-card title="Opportunities">
+            <div>
+                <lightning-datatable key-field="Id"
+                data={oppdata}
+                columns ={oppcolumns}></lightning-datatable>
+            </div>
+        </lightning-card>
+    </template>
+        
+   
+    
+</template>

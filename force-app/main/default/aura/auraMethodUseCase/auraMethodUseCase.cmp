@@ -1,0 +1,14 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="mess" type="string" default="Example:"></aura:attribute>
+    <!-- <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> -->
+    <p>{!v.mess}</p>
+    <lightning:button variant="success" label="Success" title="Success" onclick="{!c.doInit }"/>
+
+    <aura:method name="sampleMethod" action="{!c.doAction}" 
+    description="Sample method with parameters"> 
+    <aura:attribute name="vone" type="String" default="Hello"/> 
+	<aura:attribute name="vtwo" type="String" default="Kavya"/>
+   
+</aura:method>
+   <c:auraMethodUseCaseChild parent="{!this}"></c:auraMethodUseCaseChild>
+</aura:component>

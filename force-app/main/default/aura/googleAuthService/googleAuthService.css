@@ -1,0 +1,17 @@
+.THIS .slds-box {
+    box-shadow: 0px 2px 5px rgb(242, 109, 15);
+    border-radius: 20px;
+    transition: background-color 2s ease-out 100ms
+}
+.THIS .slds-theme {
+   background-color: rgb(244, 180, 0);
+    color: rgb(18, 17, 17) ;
+}
+.THIS .slds-page-header {
+    color: rgb(12, 51, 113);
+}
+ /* .THIS .slds-box:hover{
+    background-color: rgb(250, 109, 39);
+
+
+} */

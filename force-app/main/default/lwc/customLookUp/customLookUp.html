@@ -1,0 +1,15 @@
+<template>
+    <lightning-card>
+        <lightning-input type="search"  label="search data" onchange={handleName}></lightning-input>
+        <template if:true={recordsToDisplay}>
+            <template for:each={recordsToDisplay} for:item="con">
+            <lightning-layout key = {con.Id}>
+                <li>{con.Name}</li>
+                <!-- <li>{con.Id}</li> -->
+            </lightning-layout>
+            </template>
+    
+        </template>
+    </lightning-card>
+    
+</template>

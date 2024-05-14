@@ -1,0 +1,113 @@
+<aura:component controller="GetAuthService"
+  implements="lightning:isUrlAddressable,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+  access="global">
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:attribute name="accessToken" type="String" default="" />
+  <aura:attribute name="isAllowed" type="Boolean" default="false" />
+  <aura:attribute name="fileContent" type="String" default="" />
+  <aura:attribute name="fileCon" type="String" default="" />
+  <aura:attribute name="fileName" type="String" default=""/>
+  <!-- <aura:attribute name="filetype" type="String" default="" /> -->
+  <aura:attribute name="showSpinner" type="Boolean" default="false" />
+  <aura:attribute name="filesize" type="String" default="" />
+  <aura:attribute name="message" type="String" default="" />
+  <aura:attribute name="access" type="String" />
+    <aura:attribute name="filetype" type="List" default="['.png', '.jpg', '.jpeg']" />
+    <aura:attribute name="multiple" type="Boolean" default="true" />
+    <aura:attribute name="disabled" type="Boolean" default="true" />
+    <aura:attribute name="cvIds" type="list" default=""/>
+    <aura:attribute name="locationURI" type="String" default=""/>
+    <!-- <aura:attribute name="recordId" type="String" /> -->
+  <lightning:card>
+
+    <aura:if isTrue="{!v.isAllowed}">
+      <div class="slds-page-header slds-theme_warning slds-text-align_center slds-text-heading_large">
+        <h2>Drive Data</h2>
+      </div>
+     
+      <div class="slds-text-align_center slds-text-heading_small slds-p-top_large">
+        <b> Upload Files Upto 4 MB </b>
+      </div>
+      <lightning:layout>
+        <lightning:layoutItem class="slds-size_4-of-12" padding="around-small">
+          <lightning:button class="slds-box" variant="base" iconName="utility:back" label="Back" title="Back action"
+            onclick="{! c.handleBackClick }" />
+        </lightning:layoutItem>
+        <lightning:layoutItem class="slds-size_4-of-12" padding="around-small">
+          <lightning:layout class="slds-box">
+            <lightning:layoutItem class="slds-p-left_xx-large slds-p-right_medium">
+              <b>
+                <lightning:input type="file" label="Attachment" name="file" multiple="true"
+                  accept="image/png, .zip, .csv, .pdf, .xlsx, .xls, .doc, .docx" onchange="{!c.handleFilesChange}">
+                </lightning:input>
+                <!-- <lightning:fileUpload label="Attach receipt"
+                    name="fileUploader"
+                    multiple="true"
+                    accept="{!v.filetype}"
+                   
+                    onuploadfinished="{!c.handleUploadFinished}" /> -->
+                    <!-- onuploadfinished="{!c.handleUploadFinished}" /> -->
+              </b>
+
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-p-top_large slds-p-left_xx-large"><b>
+                <lightning:button variant="brand" label="Submit" title="Submit action" onclick="{! c.handleClick }" />
+
+              </b>
+              <aura:if isTrue="{!v.showSpinner}">
+                <lightning:spinner alternativeText="Loading" size="large" />
+              </aura:if>
+            </lightning:layoutItem>
+            
+          </lightning:layout>
+          
+
+        </lightning:layoutItem>
+
+        <lightning:layoutItem class="slds-size_4-of-12" padding="around-small"></lightning:layoutItem>
+      </lightning:layout>
+      <aura:if isTrue="{!v.fileName}">
+        <lightning:layout>
+          <lightning:layoutItem class="slds-size_4-of-12" padding="around-small"></lightning:layoutItem>
+          <lightning:layoutItem class="slds-size_4-of-12" padding="around-small">
+            <div class="slds-box ">
+            <p class="slds-text-align_center">{!v.fileName}</p>
+            <!-- <lightning:icon iconName="utility:close" class="slds-m-left_medium" onclick="{!c.handleCloseClick}"></lightning:icon> -->
+          </div></lightning:layoutItem>
+          <lightning:layoutItem class="slds-size_4-of-12" padding="around-small"></lightning:layoutItem>
+        </lightning:layout>
+      
+    </aura:if>
+      
+          <div class="slds-text-align_center slds-text-color_success">{!v.message}</div>
+
+      <div class="slds-m-around_medium slds-box">
+        <c:driveDataTable></c:driveDataTable>
+
+      </div>
+      <aura:set attribute="else">
+        <div class="slds-page-header slds-theme_warning slds-text-align_center slds-text-heading_large">
+
+          <h1>
+
+            Google Drive Authorization
+
+          </h1>
+
+        </div>
+        <hr />
+        <div class="slds-text-align_center">
+          <img src="{!$Resource.DriveLogo}" />
+          <br />
+
+          <lightning:button variant="success" label="Authorize Google " title="Authorize Google"
+            onclick="{! c.doAuth }" />
+
+        </div>
+
+      </aura:set>
+    </aura:if>
+
+  </lightning:card>
+
+</aura:component>

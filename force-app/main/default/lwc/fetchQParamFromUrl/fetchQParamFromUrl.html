@@ -1,0 +1,58 @@
+<template>
+    <lightning-combobox
+        label="Select Day of Week"
+        value={selectedDay}
+        options={dayOptions}
+        placeholder="-- Select Day --"
+        onchange={handleDayChange}>
+    </lightning-combobox>
+
+    <template if:true={selectedDay}>
+        <div>
+            <div class="daySlots slds-m-top_small">
+                <h2>Time Slots for {selectedDay}</h2>
+            </div>
+            <ul>
+                <template for:each={getTimeSlotsForSelectedDay} for:item="timeSlot">
+                    <li key={timeSlot.Id} class="slotCss slds-m-top_small slds-box">
+                        <div class="slotCss">
+                            Start Time: {timeSlot.StartTime}, End Time: {timeSlot.EndTime}
+                        </div>
+                        
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </template>
+
+    <!-- <lightning-card title="Time Slots" icon-name="custom:custom15">
+        <div class="slds-m-around_medium">
+            <lightning-combobox
+                label="Select Date"
+                value={selectedDate}
+                options={dateOptions}
+                onchange={handleDateChange}
+            ></lightning-combobox>
+            <lightning-combobox
+                label="Select Resource"
+                value={selectedResource}
+                options={resourceOptions}
+                onchange={handleResourceChange}
+            ></lightning-combobox>
+            <lightning-button label="Get Time Slots" variant="brand" onclick={getTimeSlots}></lightning-button>
+
+            <template if:true={timeSlots.length}>
+                <ul class="slds-list_vertical slds-has-dividers_top-space">
+                    <template for:each={timeSlots} for:item="timeSlot">
+                        <li key={timeSlot.Id}>
+                            {timeSlot.StartTime} - {timeSlot.EndTime}
+                        </li>
+                    </template>
+                </ul>
+            </template>
+            <template if:false={timeSlots.length}>
+                <p>No time slots available.</p>
+            </template>
+        </div>
+    </lightning-card> -->
+</template>

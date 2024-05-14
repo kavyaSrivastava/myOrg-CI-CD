@@ -1,0 +1,19 @@
+<template>
+   
+
+
+<lightning-card>
+
+<lightning-input label="Enter first Number" onchange ={handleChange} ></lightning-input>
+<lightning-input label="Enter second Number" onchange ={handleChange1}></lightning-input>
+<lightning-button-group>
+    <lightning-button label="Add" onclick={addthem}></lightning-button>
+    <lightning-button label="Substract" onclick={subthem}></lightning-button>
+    <lightning-button label="Multiply" onclick={multhem}></lightning-button>
+    <lightning-button label ="Divide" onclick={divthem}></lightning-button>
+</lightning-button-group>
+<br>
+The Result is : {result}
+</lightning-card>
+    
+</template>

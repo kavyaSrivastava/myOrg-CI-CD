@@ -1,0 +1,10 @@
+<aura:component>
+    <aura:attribute type="Aura.Component[]" name="panel"/>
+ 
+
+
+    {!v.panel}
+    
+    <lightning:button label="Create Component" onclick="{!c.createComponent}"/>    
+    
+</aura:component>

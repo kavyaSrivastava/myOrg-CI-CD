@@ -1,0 +1,35 @@
+<template>
+       <template if:false={areMessageVisible}>
+
+       
+        <template for:each={listOfMember} for:item="acc">
+           
+                <p class="slds-box slds-p-around_medium" key={acc.id} data-name={acc.Email__c} onclick={myFunction} >
+                    {acc.Name}
+               </p>
+            
+            </template>
+       
+       </template>
+       <template if:true={areMessageVisible}>
+        <template for:each={listOfMessages} for:item="mess">
+            <p class="slds-box slds-p-around_medium" key={mess.Id} >
+              {mess.Message__c}
+            </p>
+        </template>
+
+        
+            <!-- <label class="slds-form-element__label" for="text-input-id-50">
+            <abbr class="slds-required" title="required"> </abbr>
+            Input Label</label> -->
+            <div class="inputBar">
+            <input type="text" id="text-input-id-50" placeholder="Send text…" onchange={handleChange} class="slds-input" />
+            </div>
+            
+        
+    </template>
+
+    
+    
+    
+</template>

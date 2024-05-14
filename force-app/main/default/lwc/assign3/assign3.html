@@ -1,0 +1,11 @@
+<template>
+    <lightning-card>
+        <lightning-input type="Id" label="Opportunity ID" onchange={handleId}></lightning-input>
+        <lightning-input type="Date" label="New Close Date" onchange={handledate}></lightning-input>
+        <lightning-button label="UPDATE CLOSE DATE" onclick={handleclick}></lightning-button>
+        <lightning-modal if:true={showModal}>
+            <div> {popup}</div>
+        </lightning-modal>
+    </lightning-card>
+    
+</template>
